@@ -12,16 +12,48 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
-## groups_usersテーブル
+## users_table
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
-
+|name|string|null: false, index: true|
+|password|string|null: false|
+|email|string|null: false|
 ### Association
+- has_many :messages
+- has_many :users_groups
+- has_many :groups, through: users_groups
+
+## massage_table
+
+|Column|Type|Options|
+|------|----|-------|
+|image|text|
+|body|text|
+|user|references|null: false, foreign_key: true|
+|group|references|null: false, foreign_key: true|
+### Association
+- belongs_to :user 
 - belongs_to :group
-- belongs_to :user
+
+
+# groups_table
+|Column|Type|Options|
+|------|----|-------|
+|name|string|
+### Association
+- has_many :messages
+- has_many :users_groups
+- has_many :groups, through: users_groups
+
+## users_groups_table
+|Column|Type|Options|
+|------|----|-------|
+|user|references|null: false, foreign_key: true|
+|group|references|null: false, foreign_key: true|
+### Association
+- belongs_to :user 
+- belongs_to :group
 
 * Database initialization
 
