@@ -12,6 +12,8 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
+# groups_usersテーブル
+
 ## users_table
 
 |Column|Type|Options|
@@ -40,7 +42,7 @@ Things you may want to cover:
 # groups_table
 |Column|Type|Options|
 |------|----|-------|
-|name|string|
+|name|string|null: false
 ### Association
 - has_many :messages
 - has_many :users_groups
